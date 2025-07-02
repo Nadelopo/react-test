@@ -1,37 +1,31 @@
 import type { FC } from 'react'
-import type { Paintings } from '@/api/services/paintings'
+import type { Painting } from '@/api/services/paintings'
 import { useQuery } from '@tanstack/react-query'
 import { getPaintings } from '@/api/services/paintings'
+import { mapPaintings } from '@/api/services/paintings/paintingsMapper'
+import { useAuthors } from '@/hooks/useAuthors'
+import { useLocations } from '@/hooks/useLocations'
+import { Card } from '@/ui/Card'
+import { withInitialData } from '@/utils/queries'
 import S from './Paintings.module.scss'
-import { Card } from '@/shared/ui/Card/Card'
-
-const withInitialData = <T,>(data: T) => {
-  const initialData = { data }
-  return {
-    initialData,
-    initialDataUpdatedAt: 0
-  }
-} 
-
-
-
-
 
 export const PaintingsList: FC = () => {
+  const { data: authors } = useAuthors()
+  const { data: locations } = useLocations()
 
   const { data } = useQuery({
     queryKey: ['paintings'],
-    queryFn: getPaintings,
-    ...withInitialData<Paintings[]>([]),
-    select: response => response.data,
+    queryFn: () => getPaintings(),
+    ...withInitialData<Painting[]>([]),
+    select: response => mapPaintings(response.data, authors, locations),
+    enabled: Boolean(authors.length) && Boolean(locations.length)
   })
 
-
   return (
-    <div className={S.paintings}>
-      {/* {data.map(p => (
-        <Card />
-      ))} */}
+    <div className={`container ${S.paintings}`}>
+      {data.map(p => (
+        <Card key={p.id} {...p} />
+      ))}
     </div>
   )
 }
