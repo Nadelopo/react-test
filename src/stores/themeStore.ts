@@ -3,7 +3,7 @@ import { localStorageGet, localStorageSet } from '@/utils/storage'
 
 type Theme = 'light' | 'dark'
 
-interface ThemeStore {
+type ThemeStore = {
   theme: Theme
   setTheme: (theme: Theme) => void
   toggleTheme: () => void
@@ -32,7 +32,6 @@ const getTheme = (): Theme => {
 }
 
 export const useThemeStore = create<ThemeStore>((set, get) => ({
-
   theme: getTheme(),
   setTheme: (theme) => {
     set({ theme })

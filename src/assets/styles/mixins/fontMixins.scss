@@ -11,3 +11,10 @@
   font-size: $size;
   text-transform: uppercase;
 }
+
+@mixin paragraph($size: 16px, $weight: 300) {
+  font-family: Inter;
+  font-size: $size;
+  font-weight: $weight;
+  line-height: 140%;
+}

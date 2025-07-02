@@ -3,6 +3,7 @@
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-bottom: 44px;
 
   @media (width <= $md) {
     margin: 24px 0;
@@ -10,6 +11,7 @@
 
   @media (width <=$sm) {
     margin: 12px 0;
+    margin-bottom: 27px;
   }
 
   .logo {

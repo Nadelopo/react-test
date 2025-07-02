@@ -14,7 +14,11 @@ export default defineConfig({
   css: {
     preprocessorOptions: {
       scss: {
-        additionalData: `@use "@/assets/styles/sizes.scss" as *; @use "@/assets/styles/variables.scss" as *; @use "@/assets/styles/typography/font-mixins.scss" as *;`,
+        additionalData: `
+        @use "@/assets/styles/sizes.scss" as *; 
+        @use "@/assets/styles/variables.scss" as *; 
+        @use "@/assets/styles/mixins/fontMixins.scss" as *; 
+        `,
       },
     },
   },

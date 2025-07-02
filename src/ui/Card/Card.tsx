@@ -12,7 +12,10 @@ export type CardProps = {
 export const Card: FC<CardProps> = (props) => {
   return (
     <div className={S.card}>
-      <img src={props.url} alt={props.name} />
+      <img
+        src={props.url}
+        alt={props.name}
+      />
       <div className={S.info_wrapper}>
         <div className={S.info}>
           <div className={S.front}>

@@ -24,7 +24,10 @@ export const PaintingsList: FC = () => {
   return (
     <div className={`container ${S.paintings}`}>
       {data.map(p => (
-        <Card key={p.id} {...p} />
+        <Card
+          key={p.id}
+          {...p}
+        />
       ))}
     </div>
   )
