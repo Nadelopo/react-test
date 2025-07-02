@@ -19,9 +19,10 @@ type GetPaintingsParams = {
 export const getPaintings = (params?: GetPaintingsParams): Promise<AxiosResponse<Painting[]>> => {
   return api.get('paintings', {
     params: {
-      _q: params?.search,
+      _limit: 6,
       _page: params?.page,
-      authorId: params?.authorId
+      q: params?.search,
+      authorId: params?.authorId,
     }
   })
 }

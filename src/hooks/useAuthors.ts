@@ -9,7 +9,7 @@ export const useAuthors = () => {
     queryFn: getAuthors,
     ...withInitialData<Author[]>([]),
     select: response => response.data,
-    staleTime: Infinity,
-    gcTime: Infinity
+    staleTime: 60 * 1000 * 60,
+    gcTime: 60 * 1000 * 60
   })
 }

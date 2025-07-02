@@ -5,7 +5,7 @@
   cursor: default;
   &:hover {
     .front {
-      transform: translateX(-250px);
+      transform: translateX(-300px);
     }
     .info_wrapper .info .back {
       transform: translateY(0px);
@@ -27,6 +27,7 @@
     width: 300px;
     .info {
       padding: 20px;
+      padding-right: 0;
       position: relative;
       &::before {
         content: '';
@@ -44,11 +45,15 @@
       .back {
         position: absolute;
         top: 20px;
+        width: calc(100% - 20px);
         transform: translateY(150px);
       }
       .heading {
         margin-bottom: 8px;
         @include heading;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
       }
       .caption {
         @include caption;
