@@ -5,6 +5,7 @@ export default antfu({
   rules: {
     'antfu/top-level-function': 'off',
     'style/comma-dangle': 'off',
+    'ts/consistent-type-definitions': 'off'
   },
   ignores: ['tsconfig.*', 'README.md',]
 })

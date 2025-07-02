@@ -1,0 +1,18 @@
+.header {
+  margin: 20px 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  @media (width <= $md) {
+    margin: 24px 0;
+  }
+
+  @media (width <=$sm) {
+    margin: 12px 0;
+  }
+
+  .logo {
+    color: light-dark(var(--primary-dark-gray), var(--primary-light-gray));
+  }
+}
