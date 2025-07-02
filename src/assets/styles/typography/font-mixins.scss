@@ -1,0 +1,13 @@
+@mixin heading($size: 16px) {
+  font-family: CormorantSC;
+  font-weight: 500;
+  font-size: $size;
+  text-transform: uppercase;
+}
+
+@mixin caption($size: 12px) {
+  font-family: Inter;
+  font-weight: 700;
+  font-size: $size;
+  text-transform: uppercase;
+}

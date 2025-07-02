@@ -1,5 +1,5 @@
 import { create } from 'zustand'
-import { localStorageGet, localStorageSet } from '../utils/storage'
+import { localStorageGet, localStorageSet } from '../shared/utils/storage'
 
 type Theme = 'light' | 'dark'
 

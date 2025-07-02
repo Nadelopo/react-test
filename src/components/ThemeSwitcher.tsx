@@ -1,16 +1,15 @@
 import type { FC } from 'react'
 import DarkIcon from '@/assets/icons/dark_icon.svg?react'
 import LightIcon from '@/assets/icons/light_icon.svg?react'
+import { ButtonIcon } from '@/shared/ui/Button'
 import { useThemeStore } from '@/stores/themeStore'
-import { Button } from '@/ui/Button'
 
-export const ThemeButton: FC = () => {
+export const ThemeSwitcher: FC = () => {
   const theme = useThemeStore(state => state.theme)
   const toggleTheme = useThemeStore(state => state.toggleTheme)
   return (
-
-    <Button onClick={toggleTheme}>
+    <ButtonIcon onClick={toggleTheme}>
       {theme === 'dark' ? <LightIcon /> : <DarkIcon />}
-    </Button>
+    </ButtonIcon>
   )
 }

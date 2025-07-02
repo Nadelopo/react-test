@@ -1,11 +1,9 @@
 import type { ButtonHTMLAttributes, FC } from 'react'
 import S from './Button.module.scss'
 
-type ButtonProps = {
+type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 
-} & ButtonHTMLAttributes<HTMLButtonElement>
-
-export const Button: FC<ButtonProps> = (props) => {
+export const ButtonIcon: FC<ButtonProps> = (props) => {
   return (
     <button className={S.button} {...props}>
       {props.children}
