@@ -1,4 +1,4 @@
-export const withInitialData = <T,>(data: T) => {
+export const withInitialData = <T>(data: T) => {
   const initialData = { data }
   return {
     initialData,

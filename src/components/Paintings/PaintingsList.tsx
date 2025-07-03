@@ -9,6 +9,7 @@ import { useLocations } from '@/hooks/useLocations'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { Card } from '@/ui/Card'
 import { withInitialData } from '@/utils/queries'
+import { EmptyResult } from '../EmptyResult/EmptyResult'
 import S from './PaintingsList.module.scss'
 
 export const PaintingsList: FC = () => {
@@ -29,24 +30,22 @@ export const PaintingsList: FC = () => {
     enabled: Boolean(authors.length) && Boolean(locations.length)
   })
 
-  return (
-    <div className={`container ${S.paintings}`}>
+  const cards = data.map(p => (
+    <Card
+      key={p.id}
+      {...p}
+    />
+  ))
 
+  return (
+    <div className="container">
       {data.length
-        ? data.map(p => (
-            <Card
-              key={p.id}
-              {...p}
-            />
-          ))
-        : (
-            <div>
-              No matches for
-              <span>
-                {` ${debouncedSearch}`}
-              </span>
+        ? (
+            <div className={S.paintings}>
+              {cards}
             </div>
-          )}
+          )
+        : <EmptyResult search={debouncedSearch} />}
     </div>
   )
 }

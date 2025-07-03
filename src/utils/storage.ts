@@ -1,8 +1,9 @@
 export const localStorageGet = <T>(key: string): T | null => {
   try {
     const data = localStorage.getItem(key)
-    if (!data)
+    if (!data) {
       return null
+    }
 
     const json = JSON.parse(data)
     return json as T

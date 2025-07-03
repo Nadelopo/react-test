@@ -1,0 +1,14 @@
+.empty_result {
+  .no_matches {
+    margin-bottom: 12px;
+    @include paragraph;
+    color: light-dark(var(--primary-dark-gray), var(--primary-light-gray));
+  }
+  .search {
+    @include paragraph(16px, 500);
+  }
+  .message {
+    color: var(--secondary-gray);
+    @include paragraph;
+  }
+}
