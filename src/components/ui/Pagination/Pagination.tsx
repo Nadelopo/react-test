@@ -21,20 +21,22 @@ export const Pagination: FC<PaginationProps> = ({ currentPage, pageCount, pageSi
     const prefPages = 3
     const slots = 5
 
-    if (countPages <= slots)
+    if (countPages <= slots) {
       return arrayRange(1, countPages + 1)
+    }
 
     const isStartPosition = currentPage - 1 < prefPages
-    const isMiddlePosition
-    = currentPage - 1 <= countPages - (prefPages + 1)
     if (isStartPosition) {
       return [...arrayRange(1, 4), dots, countPages]
     }
+
+    const isMiddlePosition = currentPage - 1 <= countPages - (prefPages + 1)
     if (isMiddlePosition) {
       const minPage = currentPage
       const maxPage = currentPage + 1
       return [1, dots, ...arrayRange(minPage, maxPage), dots, countPages]
     }
+
     return [1, dots, ...arrayRange(countPages - (2), countPages + 1)]
   }, [currentPage, pageCount, pageSize])
 
