@@ -13,11 +13,15 @@ type FiltersStore = {
   setIsLoading: (value: boolean) => void
 }
 
-export const useFiltersStore = create<FiltersStore>(set => ({
+export const useFiltersStore = create<FiltersStore>((set, get) => ({
   page: 1,
   setPage: page => set({ page }),
   search: '',
-  setSearch: search => set({ search }),
+  setSearch: (search) => {
+    const { setPage } = get()
+    setPage(1)
+    set({ search })
+  },
   limit: 6,
   setLimit: limit => set({ limit }),
   totalPaintings: 0,

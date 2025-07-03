@@ -63,8 +63,9 @@
         background: light-dark(var(--accent-red), var(--accent-gold));
         left: 0;
         bottom: calc(50% - 21px);
-        @media (width < $lg) {
-          display: none;
+        display: none;
+        @media (width >= $lg) {
+          display: block;
         }
       }
       .front,
@@ -76,10 +77,10 @@
         top: 8px;
         width: calc(100% - 20px);
         transform: translateY(150px);
-        @media (width < $sm) {
+        @media (width >= $sm) {
           top: 12px;
         }
-        @media (width < $lg) {
+        @media (width >= $lg) {
           top: 20px;
         }
       }

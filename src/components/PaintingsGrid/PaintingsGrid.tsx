@@ -6,7 +6,6 @@ import { getPaintings } from '@/api/services/paintings'
 import { mapPaintings } from '@/api/services/paintings/paintingsMapper'
 import { Card } from '@/components/ui/Card'
 import { useAuthors } from '@/hooks/useAuthors'
-import { useDebounce } from '@/hooks/useDebounce'
 import { useLocations } from '@/hooks/useLocations'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { EmptyResult } from '../EmptyResult/EmptyResult'
@@ -20,19 +19,13 @@ export const PaintingsGrid: FC = () => {
   const limit = useFiltersStore(state => state.limit)
   const setTotalPaintings = useFiltersStore(state => state.setTotalPaintings)
   const page = useFiltersStore(state => state.page)
-  const setPage = useFiltersStore(state => state.setPage)
   const setIsLoading = useFiltersStore(state => state.setIsLoading)
 
-  const debouncedSearch = useDebounce(search)
-  useEffect(() => {
-    setPage(1)
-  }, [debouncedSearch])
-
   const { data, isFetching } = useQuery({
-    queryKey: ['paintings', debouncedSearch, page],
+    queryKey: ['paintings', search, page],
     queryFn: async ({ signal }) => {
       const response = await getPaintings({
-        search: debouncedSearch,
+        search,
         limit,
         page,
         signal
@@ -67,9 +60,7 @@ export const PaintingsGrid: FC = () => {
 
   const isLoading = isFetching || isLocationsLoading || isAuthorsLoading
 
-  useEffect(() => {
-    setIsLoading(isLoading)
-  }, [isLoading])
+  useEffect(() => setIsLoading(isLoading), [isLoading])
 
   if (isLoading) {
     return (
@@ -85,7 +76,7 @@ export const PaintingsGrid: FC = () => {
               {cards}
             </div>
           )
-        : <EmptyResult search={debouncedSearch} />}
+        : <EmptyResult search={search} />}
     </div>
   )
 }
