@@ -1,7 +1,7 @@
 import type { FC } from 'react'
 import type { Painting } from '@/api/services/paintings'
 import { useQuery } from '@tanstack/react-query'
-import { useEffect } from 'react'
+import { useEffect, useMemo } from 'react'
 import { getPaintings } from '@/api/services/paintings'
 import { mapPaintings } from '@/api/services/paintings/paintingsMapper'
 import { Card } from '@/components/ui/Card'
@@ -53,6 +53,11 @@ export const PaintingsGrid: FC = () => {
     }
   }, [data])
 
+  const cardSkeletons = useMemo(() =>
+    Array.from({ length: limit }).fill(null).map((_, i) => (
+      <CardSkeleton key={i} />
+    )), [limit])
+
   const setIsLoading = useFiltersStore(state => state.setIsLoading)
   const isLoading = isFetching || isLocationsLoading || isAuthorsLoading
   useEffect(() => setIsLoading(isLoading), [isLoading])
@@ -70,9 +75,6 @@ export const PaintingsGrid: FC = () => {
       key={p.id}
       {...p}
     />
-  ))
-  const cardSkeletons = Array.from({ length: limit }).fill(null).map((_, i) => (
-    <CardSkeleton key={i} />
   ))
 
   return (
