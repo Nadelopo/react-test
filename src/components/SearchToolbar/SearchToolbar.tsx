@@ -9,14 +9,17 @@ export const SearchToolbar: FC = () => {
   const setSearch = useFiltersStore(state => state.setSearch)
 
   return (
-    <div className={`container ${S.search_toolbar}`}>
+    <div className="container">
 
-      <Search
-        placeholder="title"
-        containerAttrs={{ className: S.search }}
-        value={search}
-        onInput={e => setSearch((e.target as HTMLInputElement).value)}
-      />
+      <div className={S.search_toolbar}>
+
+        <Search
+          placeholder="title"
+          containerAttrs={{ className: S.search }}
+          value={search}
+          onInput={e => setSearch((e.target as HTMLInputElement).value)}
+        />
+      </div>
     </div>
   )
 }

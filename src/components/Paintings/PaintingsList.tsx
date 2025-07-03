@@ -9,7 +9,7 @@ import { useLocations } from '@/hooks/useLocations'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { Card } from '@/ui/Card'
 import { withInitialData } from '@/utils/queries'
-import S from './Paintings.module.scss'
+import S from './PaintingsList.module.scss'
 
 export const PaintingsList: FC = () => {
   const { data: authors } = useAuthors()

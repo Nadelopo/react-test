@@ -8,7 +8,8 @@ type SearchProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export const Search: FC<SearchProps> = ({ containerAttrs, ...props }) => {
-  const id = props.id ?? crypto.randomUUID()
+  // const id = props.id ?? crypto.randomUUID()
+  const id = Math.random().toString()
   return (
     <div
       {...containerAttrs}
