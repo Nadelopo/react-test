@@ -10,8 +10,7 @@ type SearchProps = InputHTMLAttributes<HTMLInputElement> & {
 }
 
 export const Search: FC<SearchProps> = ({ containerAttrs, ...props }) => {
-  // const id = props.id ?? crypto.randomUUID()
-  const id = Math.random().toString()
+  const id = props.id ?? crypto.randomUUID()
   return (
     <div
       {...containerAttrs}
@@ -21,11 +20,17 @@ export const Search: FC<SearchProps> = ({ containerAttrs, ...props }) => {
       <input
         {...props}
         id={id}
+
       />
-      <CrossIcon
-        className={S.cross_icon}
-        onClick={() => props.onClear?.()}
-      />
+      {
+        Boolean(props.value)
+        && (
+          <CrossIcon
+            className={S.cross_icon}
+            onClick={() => props.onClear?.()}
+          />
+        )
+      }
     </div>
   )
 }

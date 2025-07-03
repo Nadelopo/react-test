@@ -19,7 +19,6 @@ export const App = () => {
         <Header />
         <SearchToolbar />
         <PaintingsGrid />
-
       </QueryClientProvider>
     </>
   )

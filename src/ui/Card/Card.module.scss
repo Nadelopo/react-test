@@ -34,7 +34,7 @@
   img {
     position: absolute;
     width: 100%;
-    transition: 0.3s;
+    transition: scale 0.3s;
   }
 
   .info_wrapper {
@@ -69,7 +69,7 @@
       }
       .front,
       .back {
-        transition: 0.3s;
+        transition: transform 0.3s;
       }
       .back {
         position: absolute;
