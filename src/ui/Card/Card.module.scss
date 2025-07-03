@@ -12,14 +12,14 @@
 
 .card {
   position: relative;
-  aspect-ratio: 392 / 260;
+  aspect-ratio: 280 / 185;
   overflow: hidden;
   cursor: default;
-  @media (width < $lg) {
+  @media (width >= $sm) {
     aspect-ratio: 352 / 220;
   }
-  @media (width < $sm) {
-    aspect-ratio: 280 / 185;
+  @media (width >= $lg) {
+    aspect-ratio: 392 / 260;
   }
   @media (pointer: fine) {
     &:hover {
@@ -41,19 +41,19 @@
     position: absolute;
     bottom: 0;
     background: light-dark(var(--primary-white), var(--primary-black));
-    width: 300px;
-    @media (width < $sm) {
-      width: 236px;
+    width: 236px;
+    @media (width >= $sm) {
+      width: 300px;
     }
     .info {
-      padding: 20px;
+      padding: 8px;
       padding-right: 0;
       position: relative;
-      @media (width < $lg) {
+      @media (width >= $sm) {
         padding: 12px;
       }
-      @media (width < $sm) {
-        padding: 8px;
+      @media (width >= $lg) {
+        padding: 20px;
       }
       &::before {
         content: '';
@@ -73,32 +73,32 @@
       }
       .back {
         position: absolute;
-        top: 20px;
+        top: 8px;
         width: calc(100% - 20px);
         transform: translateY(150px);
-        @media (width < $lg) {
+        @media (width < $sm) {
           top: 12px;
         }
-        @media (width < $sm) {
-          top: 8px;
+        @media (width < $lg) {
+          top: 20px;
         }
       }
       .heading {
-        margin-bottom: 8px;
-        @include heading;
+        @include heading(12px);
+        margin-bottom: 4px;
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        @media (width < $sm) {
-          @include heading(12px);
-          margin-bottom: 4px;
+        @media (width >= $sm) {
+          @include heading;
+          margin-bottom: 8px;
         }
       }
       .caption {
-        @include caption;
+        @include caption(8px);
         color: light-dark(var(--accent-red), var(--accent-gold));
-        @media (width < $sm) {
-          @include caption(8px);
+        @media (width >= $sm) {
+          @include caption;
         }
       }
     }

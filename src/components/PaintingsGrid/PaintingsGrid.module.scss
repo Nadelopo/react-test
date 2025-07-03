@@ -1,15 +1,15 @@
 .paintings_grid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 32px;
   margin-bottom: 40px;
-  @media (width < $lg) {
+  gap: 20px;
+  grid-template-columns: 1fr;
+  @media (width >= $sm) {
     gap: 24px;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: 1fr 1fr;
   }
-  @media (width < $sm) {
-    grid-template-columns: 1fr;
-    margin-bottom: 32px;
+  @media (width >= $lg) {
+    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 

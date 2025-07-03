@@ -1,17 +1,14 @@
 .header {
-  padding: 20px 0;
+  padding: 12px 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 44px;
-
-  @media (width < $lg) {
+  @media (width >= $sm) {
     padding: 24px 0;
   }
-
-  @media (width <$sm) {
-    padding: 12px 0;
-    margin-bottom: 27px;
+  @media (width >= $lg) {
+    padding: 20px 0;
   }
 
   .logo {

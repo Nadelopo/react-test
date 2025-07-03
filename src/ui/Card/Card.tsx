@@ -15,7 +15,6 @@ export const Card: FC<CardProps> = (props) => {
       <img
         src={props.url}
         alt={props.name}
-        onTouchStart={e => e.preventDefault()}
         onContextMenu={e => e.preventDefault()}
       />
       <div className={S.info_wrapper}>
