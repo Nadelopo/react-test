@@ -10,14 +10,13 @@ export const SearchToolbar: FC = () => {
 
   return (
     <div className="container">
-
       <div className={S.search_toolbar}>
-
         <Search
           placeholder="title"
           containerAttrs={{ className: S.search }}
           value={search}
           onInput={e => setSearch((e.target as HTMLInputElement).value)}
+          onClear={() => setSearch('')}
         />
       </div>
     </div>

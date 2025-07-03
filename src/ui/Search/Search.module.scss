@@ -27,4 +27,10 @@
   .saerch_icon {
     color: light-dark(var(--primary-dark-gray), var(--primary-light-gray));
   }
+  .cross_icon {
+    cursor: pointer;
+    position: absolute;
+    right: 16px;
+    top: 12px;
+  }
 }

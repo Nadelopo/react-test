@@ -1,6 +1,6 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Header } from '@/components/Header'
-import { PaintingsList } from './components/Paintings/PaintingsList'
+import { PaintingsGrid } from './components/Paintings/PaintingsGrid'
 import { SearchToolbar } from './components/SearchToolbar/SearchToolbar'
 
 export const App = () => {
@@ -18,7 +18,7 @@ export const App = () => {
       <QueryClientProvider client={queryClient}>
         <Header />
         <SearchToolbar />
-        <PaintingsList />
+        <PaintingsGrid />
 
       </QueryClientProvider>
     </>

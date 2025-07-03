@@ -10,9 +10,9 @@ import { useFiltersStore } from '@/stores/filtersStore'
 import { Card } from '@/ui/Card'
 import { withInitialData } from '@/utils/queries'
 import { EmptyResult } from '../EmptyResult/EmptyResult'
-import S from './PaintingsList.module.scss'
+import S from './PaintingsGrid.module.scss'
 
-export const PaintingsList: FC = () => {
+export const PaintingsGrid: FC = () => {
   const { data: authors } = useAuthors()
   const { data: locations } = useLocations()
 
@@ -41,7 +41,7 @@ export const PaintingsList: FC = () => {
     <div className="container">
       {data.length
         ? (
-            <div className={S.paintings}>
+            <div className={S.paintings_grid}>
               {cards}
             </div>
           )
