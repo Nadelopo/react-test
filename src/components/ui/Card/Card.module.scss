@@ -1,3 +1,5 @@
+@use './CardResize.scss' as *;
+
 @mixin show-info() {
   .front {
     transform: translateX(-300px);
@@ -11,16 +13,7 @@
 }
 
 .card {
-  position: relative;
-  aspect-ratio: 280 / 185;
-  overflow: hidden;
-  cursor: default;
-  @media (width >= $sm) {
-    aspect-ratio: 352 / 220;
-  }
-  @media (width >= $lg) {
-    aspect-ratio: 392 / 260;
-  }
+  @include card-resize;
   @media (pointer: fine) {
     &:hover {
       @include show-info;

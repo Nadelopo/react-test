@@ -1,0 +1,14 @@
+@use '@/assets/styles/sizes.scss' as *;
+
+@mixin card-resize() {
+  position: relative;
+  aspect-ratio: 280 / 185;
+  overflow: hidden;
+  cursor: default;
+  @media (width >= $sm) {
+    aspect-ratio: 352 / 220;
+  }
+  @media (width >= $lg) {
+    aspect-ratio: 392 / 260;
+  }
+}

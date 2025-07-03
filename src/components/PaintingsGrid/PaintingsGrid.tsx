@@ -9,6 +9,7 @@ import { useAuthors } from '@/hooks/useAuthors'
 import { useLocations } from '@/hooks/useLocations'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { EmptyResult } from '../EmptyResult/EmptyResult'
+import { CardSkeleton } from '../ui/Card/CardSkeleton'
 import S from './PaintingsGrid.module.scss'
 
 export const PaintingsGrid: FC = () => {
@@ -19,7 +20,6 @@ export const PaintingsGrid: FC = () => {
   const limit = useFiltersStore(state => state.limit)
   const setTotalPaintings = useFiltersStore(state => state.setTotalPaintings)
   const page = useFiltersStore(state => state.page)
-  const setIsLoading = useFiltersStore(state => state.setIsLoading)
 
   const { data, isFetching } = useQuery({
     queryKey: ['paintings', search, page],
@@ -51,32 +51,33 @@ export const PaintingsGrid: FC = () => {
     enabled: Boolean(authors.length) && Boolean(locations.length)
   })
 
+  const setIsLoading = useFiltersStore(state => state.setIsLoading)
+  const isLoading = isFetching || isLocationsLoading || isAuthorsLoading
+  useEffect(() => setIsLoading(isLoading), [isLoading])
+
+  if (!isLoading && !data.paintings.length) {
+    return (
+      <div className="container">
+        <EmptyResult search={search} />
+      </div>
+    )
+  }
+
   const cards = data.paintings.map(p => (
     <Card
       key={p.id}
       {...p}
     />
   ))
-
-  const isLoading = isFetching || isLocationsLoading || isAuthorsLoading
-
-  useEffect(() => setIsLoading(isLoading), [isLoading])
-
-  if (isLoading) {
-    return (
-      <div className={S.loading}>Loading...</div>
-    )
-  }
+  const cardSkeletons = Array.from({ length: limit }).fill(null).map((_, i) => (
+    <CardSkeleton key={i} />
+  ))
 
   return (
     <div className="container">
-      {data.paintings.length
-        ? (
-            <div className={S.paintings_grid}>
-              {cards}
-            </div>
-          )
-        : <EmptyResult search={search} />}
+      <div className={S.paintings_grid}>
+        {isLoading ? cardSkeletons : cards}
+      </div>
     </div>
   )
 }
