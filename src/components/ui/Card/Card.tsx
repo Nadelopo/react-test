@@ -16,6 +16,7 @@ export const Card: FC<CardProps> = (props) => {
         src={props.url}
         alt={props.name}
         onContextMenu={e => e.preventDefault()}
+        loading="lazy"
       />
       <div className={S.info_wrapper}>
         <div className={S.info}>

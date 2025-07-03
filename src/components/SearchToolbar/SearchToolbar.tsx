@@ -1,6 +1,6 @@
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
-import { Search } from '@/components/ui/Search/Search'
+import { Search } from '@/components/ui/Search'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { debounce } from '@/utils/debounce'
 import S from './SearchToolbar.module.scss'
