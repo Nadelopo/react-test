@@ -32,24 +32,26 @@ export const PaintingsGrid: FC = () => {
       })
 
       const countPaintings: string | undefined = response.headers['x-total-count']
-      if (countPaintings) {
-        setTotalPaintings(Number(countPaintings))
-      }
 
       return { ...response, countPaintings: countPaintings ? Number(countPaintings) : null }
     },
-    initialData: () => {
-      return { data: [] as Painting[], countPaintings: null as number | null }
-    },
+    initialData: () => ({
+      data: [] as Painting[],
+      countPaintings: null as number | null
+    }),
     initialDataUpdatedAt: 0,
-    select: (response) => {
-      if (response.countPaintings) {
-        setTotalPaintings(response.countPaintings)
-      }
-      return { paintings: mapPaintings(response.data, authors, locations) }
-    },
+    select: response => ({
+      paintings: mapPaintings(response.data, authors, locations),
+      countPaintings: response.countPaintings
+    }),
     enabled: Boolean(authors.length) && Boolean(locations.length)
   })
+
+  useEffect(() => {
+    if (data.countPaintings !== null) {
+      setTotalPaintings(data.countPaintings)
+    }
+  }, [data])
 
   const setIsLoading = useFiltersStore(state => state.setIsLoading)
   const isLoading = isFetching || isLocationsLoading || isAuthorsLoading
