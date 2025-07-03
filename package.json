@@ -1,0 +1,36 @@
+{
+  "name": "testovoe-react",
+  "type": "module",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc -b && vite build",
+    "lint": "eslint .",
+    "preview": "vite preview",
+    "type-check": "tsc -b"
+  },
+  "dependencies": {
+    "@tanstack/react-query": "^5.81.5",
+    "@types/node": "^24.0.10",
+    "axios": "^1.10.0",
+    "node": "^22.17.0",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "zustand": "^5.0.6"
+  },
+  "devDependencies": {
+    "@antfu/eslint-config": "^4.16.2",
+    "@types/react": "^19.1.8",
+    "@types/react-dom": "^19.1.6",
+    "@vitejs/plugin-react": "^4.5.2",
+    "clsx": "^2.1.1",
+    "eslint": "^9.30.1",
+    "eslint-plugin-format": "^1.0.1",
+    "globals": "^16.2.0",
+    "sass": "^1.89.2",
+    "typescript": "~5.8.3",
+    "vite": "^7.0.0",
+    "vite-plugin-svgr": "^4.3.0"
+  }
+}
