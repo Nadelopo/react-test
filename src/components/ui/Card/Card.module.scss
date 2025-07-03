@@ -1,0 +1,100 @@
+@use './CardResize.scss' as *;
+
+@mixin show-info() {
+  .front {
+    transform: translateX(-300px);
+  }
+  .info_wrapper .info .back {
+    transform: translateY(0px);
+  }
+  img {
+    scale: 1.05;
+  }
+}
+
+.card {
+  @include card-resize;
+  @media (pointer: fine) {
+    &:hover {
+      @include show-info;
+    }
+  }
+  @media (pointer: coarse) {
+    &:active {
+      @include show-info;
+    }
+  }
+  img {
+    position: absolute;
+    width: 100%;
+    transition: scale 0.3s;
+  }
+
+  .info_wrapper {
+    position: absolute;
+    bottom: 0;
+    background: light-dark(var(--primary-white), var(--primary-black));
+    width: 236px;
+    @media (width >= $sm) {
+      width: 300px;
+    }
+    .info {
+      padding: 8px;
+      padding-right: 0;
+      position: relative;
+      @media (width >= $sm) {
+        padding: 12px;
+      }
+      @media (width >= $lg) {
+        padding: 20px;
+      }
+      &::before {
+        content: '';
+        position: absolute;
+        height: 42px;
+        width: 2px;
+        background: light-dark(var(--accent-red), var(--accent-gold));
+        left: 0;
+        bottom: calc(50% - 21px);
+        display: none;
+        @media (width >= $lg) {
+          display: block;
+        }
+      }
+      .front,
+      .back {
+        transition: transform 0.3s;
+      }
+      .back {
+        position: absolute;
+        top: 8px;
+        width: calc(100% - 20px);
+        transform: translateY(150px);
+        @media (width >= $sm) {
+          top: 12px;
+        }
+        @media (width >= $lg) {
+          top: 20px;
+        }
+      }
+      .heading {
+        @include heading(12px);
+        margin-bottom: 4px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        @media (width >= $sm) {
+          @include heading;
+          margin-bottom: 8px;
+        }
+      }
+      .caption {
+        @include caption(8px);
+        color: light-dark(var(--accent-red), var(--accent-gold));
+        @media (width >= $sm) {
+          @include caption;
+        }
+      }
+    }
+  }
+}
