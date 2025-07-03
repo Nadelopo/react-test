@@ -1,6 +1,6 @@
 import type { ButtonHTMLAttributes, FC } from 'react'
 import clsx from 'clsx'
-import S from './Button.module.scss'
+import S from './ButtonIcon.module.scss'
 
 type ButtonProps = ButtonHTMLAttributes<HTMLButtonElement>
 

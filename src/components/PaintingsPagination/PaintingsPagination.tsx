@@ -1,6 +1,6 @@
 import type { FC } from 'react'
+import { Pagination } from '@/components/ui/Pagination/Pagination'
 import { useFiltersStore } from '@/stores/filtersStore'
-import { Pagination } from '@/ui/Pagination/Pagination'
 import S from './PaintingsPagination.module.scss'
 
 export const PaintingsPagination: FC = () => {

@@ -18,23 +18,24 @@ export const Pagination: FC<PaginationProps> = ({ currentPage, pageCount, pageSi
   const countPages = Math.ceil(pageCount / pageSize)
 
   const paginationItems = useMemo(() => {
-    let items: (number | null)[] = []
-    if (pageCount <= pageSize) {
-      items = [1]
+    const prefPages = 3
+    const slots = 5
+
+    if (countPages <= slots)
+      return arrayRange(1, countPages + 1)
+
+    const isStartPosition = currentPage - 1 < prefPages
+    const isMiddlePosition
+    = currentPage - 1 <= countPages - (prefPages + 1)
+    if (isStartPosition) {
+      return [...arrayRange(1, 4), dots, countPages]
     }
-    else if (countPages <= 4) {
-      items = arrayRange(1, countPages + 1)
+    if (isMiddlePosition) {
+      const minPage = currentPage
+      const maxPage = currentPage + 1
+      return [1, dots, ...arrayRange(minPage, maxPage), dots, countPages]
     }
-    else if (currentPage < 4) {
-      items = [1, 2, 3, 4, dots, countPages]
-    }
-    else if (countPages - currentPage > 3) {
-      items = [1, dots, currentPage - 1, currentPage, currentPage + 1, dots, countPages]
-    }
-    else {
-      items = [1, dots, countPages - 3, countPages - 2, countPages - 1, countPages]
-    }
-    return items
+    return [1, dots, ...arrayRange(countPages - (2), countPages + 1)]
   }, [currentPage, pageCount, pageSize])
 
   return (
@@ -58,6 +59,7 @@ export const Pagination: FC<PaginationProps> = ({ currentPage, pageCount, pageSi
               [S.active]: currentPage === item
             })}
             onClick={() => item !== null && onPageUpdate?.(item)}
+            tabIndex={item === null ? -1 : 0}
           >
             {item ?? '...'}
           </button>

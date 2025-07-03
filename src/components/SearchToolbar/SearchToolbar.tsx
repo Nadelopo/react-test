@@ -1,7 +1,6 @@
 import type { FC } from 'react'
+import { Search } from '@/components/ui/Search/Search'
 import { useFiltersStore } from '@/stores/filtersStore'
-
-import { Search } from '@/ui/Search/Search'
 import S from './SearchToolbar.module.scss'
 
 export const SearchToolbar: FC = () => {

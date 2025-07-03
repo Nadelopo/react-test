@@ -1,7 +1,7 @@
 import type { Author } from '@/api/services/authors'
 import type { Location } from '@/api/services/locations'
 import type { Painting } from '@/api/services/paintings'
-import type { CardProps } from '@/ui/Card/Card'
+import type { CardProps } from '@/components/ui/Card/Card'
 
 export const mapPaintings = (
   paintings: Painting[],
