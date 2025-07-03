@@ -1,7 +1,9 @@
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query'
 import { Header } from '@/components/Header'
-import { PaintingsGrid } from './components/Paintings/PaintingsGrid'
+import { PaintingsGrid } from './components/PaintingsGrid/PaintingsGrid'
+import { PaintingsPagination } from './components/PaintingsPagination/PaintingsPagination'
 import { SearchToolbar } from './components/SearchToolbar/SearchToolbar'
+import { useFiltersStore } from './stores/filtersStore'
 
 export const App = () => {
   const queryClient = new QueryClient({
@@ -13,12 +15,16 @@ export const App = () => {
     }
   })
 
+  const isLoading = useFiltersStore(state => state.isLoading)
+  const totalPaintings = useFiltersStore(state => state.totalPaintings)
+
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <Header />
         <SearchToolbar />
         <PaintingsGrid />
+        {(!isLoading && Boolean(totalPaintings)) && <PaintingsPagination />}
       </QueryClientProvider>
     </>
   )

@@ -9,7 +9,7 @@ type SearchProps = InputHTMLAttributes<HTMLInputElement> & {
   onClear?: () => void
 }
 
-export const Search: FC<SearchProps> = ({ containerAttrs, ...props }) => {
+export const Search: FC<SearchProps> = ({ containerAttrs, onClear, ...props }) => {
   const id = props.id ?? crypto.randomUUID()
   return (
     <div
@@ -27,7 +27,7 @@ export const Search: FC<SearchProps> = ({ containerAttrs, ...props }) => {
         && (
           <CrossIcon
             className={S.cross_icon}
-            onClick={() => props.onClear?.()}
+            onClick={() => onClear?.()}
           />
         )
       }

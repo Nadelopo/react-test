@@ -8,6 +8,7 @@ export default antfu({
     'ts/consistent-type-definitions': 'off',
     '@stylistic/jsx-max-props-per-line': ['error', { maximum: 1, when: 'always' }],
     '@stylistic/jsx-first-prop-new-line': ['error', 'multiline'],
+    'no-console': 'warn'
   },
   ignores: ['tsconfig.*', 'README.md'],
 

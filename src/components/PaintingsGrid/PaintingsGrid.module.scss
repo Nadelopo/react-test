@@ -2,11 +2,18 @@
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 32px;
+  margin-bottom: 40px;
   @media (width < $lg) {
     gap: 24px;
     grid-template-columns: repeat(2, 1fr);
   }
   @media (width < $sm) {
     grid-template-columns: 1fr;
+    margin-bottom: 32px;
   }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
 }
