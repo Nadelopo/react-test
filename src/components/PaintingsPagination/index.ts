@@ -1,0 +1,1 @@
+export { PaintingsPagination } from './PaintingsPagination'

@@ -11,7 +11,7 @@ export const SearchToolbar: FC = () => {
   const [text, setText] = useState(search)
 
   const debouncedSetSearch = useRef(
-    debounce((val: string) => setSearch(val), 300)
+    debounce((val: string) => setSearch(val))
   ).current
 
   const handleInput = (e: React.FormEvent<HTMLInputElement>) => {
