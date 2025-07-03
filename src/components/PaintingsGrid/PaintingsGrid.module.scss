@@ -1,0 +1,19 @@
+.paintings_grid {
+  display: grid;
+  margin-bottom: 40px;
+  gap: 20px;
+  grid-template-columns: 1fr;
+  @media (width >= $sm) {
+    gap: 24px;
+    grid-template-columns: 1fr 1fr;
+  }
+  @media (width >= $lg) {
+    gap: 32px;
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.loading {
+  display: flex;
+  justify-content: center;
+}

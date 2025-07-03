@@ -1,0 +1,6 @@
+@use './CardResize.scss' as *;
+
+.card_skeleton {
+  background: #b6b6b6;
+  @include card-resize;
+}
