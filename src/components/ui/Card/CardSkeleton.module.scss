@@ -1,6 +1,6 @@
 @use './CardResize.scss' as *;
 
 .card_skeleton {
-  @include card-resize;
   background: #b6b6b6;
+  @include card-resize;
 }
