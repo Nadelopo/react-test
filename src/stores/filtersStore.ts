@@ -7,10 +7,6 @@ type FiltersStore = {
   setPage: (value: number) => void
   limit: number
   setLimit: (value: number) => void
-  totalPaintings: number
-  setTotalPaintings: (value: number) => void
-  isLoading: boolean
-  setIsLoading: (value: boolean) => void
 }
 
 export const useFiltersStore = create<FiltersStore>((set, get) => ({
@@ -24,8 +20,4 @@ export const useFiltersStore = create<FiltersStore>((set, get) => ({
   },
   limit: 6,
   setLimit: limit => set({ limit }),
-  totalPaintings: 0,
-  setTotalPaintings: totalPaintings => set({ totalPaintings }),
-  isLoading: true,
-  setIsLoading: isLoading => set({ isLoading })
 }))

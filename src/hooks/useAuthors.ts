@@ -7,7 +7,7 @@ export const useAuthors = () => {
   return useQuery({
     queryKey: ['authors'],
     queryFn: getAuthors,
-    ...withInitialData<Author[]>([]),
+    ...withInitialData<{ data: Author[] }>({ data: [] }),
     select: response => response.data,
     staleTime: 60 * 1000 * 60,
     gcTime: 60 * 1000 * 60

@@ -1,5 +1,4 @@
 import type { FC } from 'react'
-import { useRef } from 'react'
 import S from './EmptyResult.module.scss'
 
 type EmptyResultProps = {
@@ -7,7 +6,6 @@ type EmptyResultProps = {
 }
 
 export const EmptyResult: FC<EmptyResultProps> = (props) => {
-  const staticSearch = useRef(props.search)
   return (
 
     <div className={S.empty_result}>
@@ -15,7 +13,7 @@ export const EmptyResult: FC<EmptyResultProps> = (props) => {
         No matches for
         <span className={S.search}>
           {' '}
-          {staticSearch.current}
+          {props.search}
         </span>
       </div>
       <div className={S.message}>

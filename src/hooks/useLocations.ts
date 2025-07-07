@@ -7,7 +7,7 @@ export const useLocations = () => {
   return useQuery({
     queryKey: ['locations'],
     queryFn: getLocations,
-    ...withInitialData<Location[]>([]),
+    ...withInitialData<{ data: Location[] }>({ data: [] }),
     select: response => response.data,
     staleTime: 60 * 1000 * 60,
     gcTime: 60 * 1000 * 60

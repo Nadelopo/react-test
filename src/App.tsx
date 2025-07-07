@@ -3,7 +3,6 @@ import { Header } from '@/components/Header'
 import { PaintingsGrid } from './components/PaintingsGrid'
 import { PaintingsPagination } from './components/PaintingsPagination'
 import { SearchToolbar } from './components/SearchToolbar'
-import { useFiltersStore } from './stores/filtersStore'
 
 const queryClient = new QueryClient({
   defaultOptions: {
@@ -15,16 +14,13 @@ const queryClient = new QueryClient({
 })
 
 export const App = () => {
-  const isLoading = useFiltersStore(state => state.isLoading)
-  const totalPaintings = useFiltersStore(state => state.totalPaintings)
-
   return (
     <>
       <QueryClientProvider client={queryClient}>
         <Header />
         <SearchToolbar />
         <PaintingsGrid />
-        {(!isLoading && Boolean(totalPaintings)) && <PaintingsPagination />}
+        <PaintingsPagination />
       </QueryClientProvider>
     </>
   )

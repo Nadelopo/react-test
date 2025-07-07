@@ -1,7 +1,4 @@
-export const withInitialData = <T>(data: T) => {
-  const initialData = { data }
-  return {
-    initialData,
-    initialDataUpdatedAt: 0
-  }
-}
+export const withInitialData = <T>(data: T) => ({
+  initialData: data,
+  initialDataUpdatedAt: 0
+})
