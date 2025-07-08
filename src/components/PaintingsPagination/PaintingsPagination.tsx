@@ -1,13 +1,12 @@
 import type { FC } from 'react'
 import { Pagination } from '@/components/ui/Pagination/Pagination'
+import { useMyShallow } from '@/hooks/useMyShallow'
 import { usePaintings } from '@/hooks/usePaintings'
 import { useFiltersStore } from '@/stores/filtersStore'
 import S from './PaintingsPagination.module.scss'
 
 export const PaintingsPagination: FC = () => {
-  const page = useFiltersStore(state => state.page)
-  const setPage = useFiltersStore(state => state.setPage)
-  const limit = useFiltersStore(state => state.limit)
+  const { page, limit, setPage } = useMyShallow(useFiltersStore, ['page', 'limit', 'setPage'])
 
   const { data, isFetching } = usePaintings()
 

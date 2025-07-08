@@ -6,14 +6,13 @@ import { useFiltersStore } from '@/stores/filtersStore'
 import { withInitialData } from '@/utils/queries'
 import { useAuthors } from './useAuthors'
 import { useLocations } from './useLocations'
+import { useMyShallow } from './useMyShallow'
 
 export const usePaintings = () => {
   const { data: authors, isFetching: isAuthorsLoading } = useAuthors()
   const { data: locations, isFetching: isLocationsLoading } = useLocations()
 
-  const search = useFiltersStore(state => state.search)
-  const limit = useFiltersStore(state => state.limit)
-  const page = useFiltersStore(state => state.page)
+  const { search, limit, page } = useMyShallow(useFiltersStore, ['search', 'limit', 'page'])
 
   const result = useQuery({
     queryKey: ['paintings', search, page],

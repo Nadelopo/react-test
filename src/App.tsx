@@ -13,15 +13,13 @@ const queryClient = new QueryClient({
   }
 })
 
-export const App = () => {
-  return (
-    <>
-      <QueryClientProvider client={queryClient}>
-        <Header />
-        <SearchToolbar />
-        <PaintingsGrid />
-        <PaintingsPagination />
-      </QueryClientProvider>
-    </>
-  )
-}
+export const App = () => (
+  <>
+    <QueryClientProvider client={queryClient}>
+      <Header />
+      <SearchToolbar />
+      <PaintingsGrid />
+      <PaintingsPagination />
+    </QueryClientProvider>
+  </>
+)

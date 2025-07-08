@@ -1,6 +1,7 @@
 import type { FC } from 'react'
 import { useMemo } from 'react'
 import { Card } from '@/components/ui/Card'
+import { useMyShallow } from '@/hooks/useMyShallow'
 import { usePaintings } from '@/hooks/usePaintings'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { EmptyResult } from '../EmptyResult/EmptyResult'
@@ -8,8 +9,7 @@ import { CardSkeleton } from '../ui/Card/CardSkeleton'
 import S from './PaintingsGrid.module.scss'
 
 export const PaintingsGrid: FC = () => {
-  const search = useFiltersStore(state => state.search)
-  const limit = useFiltersStore(state => state.limit)
+  const { search, limit } = useMyShallow(useFiltersStore, ['search', 'limit'])
 
   const { data, isFetching } = usePaintings()
 
