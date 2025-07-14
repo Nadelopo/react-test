@@ -6,13 +6,13 @@ import { useFiltersStore } from '@/stores/filtersStore'
 import { withInitialData } from '@/utils/queries'
 import { useAuthors } from './useAuthors'
 import { useLocations } from './useLocations'
-import { useStoreDestructure } from './useMyShallow'
+import { useStoreSelect } from './useStoreSelect'
 
 export const usePaintings = () => {
   const { data: authors, isFetching: isAuthorsLoading } = useAuthors()
   const { data: locations, isFetching: isLocationsLoading } = useLocations()
 
-  const { search, limit, page } = useStoreDestructure(useFiltersStore, ['search', 'limit', 'page'])
+  const { search, limit, page } = useStoreSelect(useFiltersStore, ['search', 'limit', 'page'])
 
   const result = useQuery({
     queryKey: ['paintings', search, page],

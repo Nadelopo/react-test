@@ -3,7 +3,7 @@ import { useShallow } from 'zustand/react/shallow'
 
 type StateFromStore<T> = T extends UseBoundStore<StoreApi<infer U>> ? U : never
 
-export const useStoreDestructure = <
+export const useStoreSelect = <
   Store extends UseBoundStore<StoreApi<any>>,
   State = StateFromStore<Store>,
   Keys extends keyof State = keyof State

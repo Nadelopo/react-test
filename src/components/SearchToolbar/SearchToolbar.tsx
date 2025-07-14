@@ -1,13 +1,13 @@
 import type { FC } from 'react'
 import { useRef, useState } from 'react'
 import { Search } from '@/components/ui/Search'
-import { useStoreDestructure } from '@/hooks/useMyShallow'
+import { useStoreSelect } from '@/hooks/useStoreSelect'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { debounce } from '@/utils/debounce'
 import S from './SearchToolbar.module.scss'
 
 export const SearchToolbar: FC = () => {
-  const { search, setSearch } = useStoreDestructure(useFiltersStore, ['search', 'setSearch'])
+  const { search, setSearch } = useStoreSelect(useFiltersStore, ['search', 'setSearch'])
   const [text, setText] = useState(search)
 
   const debouncedSetSearch = useRef(
