@@ -1,4 +1,4 @@
-import type { AxiosResponse } from 'axios'
+import type { ApiResponse } from './api.types'
 import { api } from '..'
 
 export type Author = {
@@ -6,6 +6,6 @@ export type Author = {
   name: string
 }
 
-export const getAuthors = (): Promise<AxiosResponse<Author[]>> => {
+export const getAuthors = (): ApiResponse<Author[]> => {
   return api.get('authors')
 }

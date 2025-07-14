@@ -1,4 +1,4 @@
-import type { AxiosResponse } from 'axios'
+import type { ApiResponse } from './api.types'
 import { api } from '..'
 
 export type Location = {
@@ -6,6 +6,6 @@ export type Location = {
   location: string
 }
 
-export const getLocations = (): Promise<AxiosResponse<Location[]>> => {
+export const getLocations = (): ApiResponse<Location[]> => {
   return api.get('locations')
 }

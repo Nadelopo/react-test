@@ -1,4 +1,4 @@
-import type { AxiosResponse } from 'axios'
+import type { ApiResponse } from '../api.types'
 import { api } from '../..'
 
 export type Painting = {
@@ -18,7 +18,7 @@ type GetPaintingsParams = {
   signal?: AbortSignal
 }
 
-export const getPaintings = (params?: GetPaintingsParams): Promise<AxiosResponse<Painting[]>> => {
+export const getPaintings = (params?: GetPaintingsParams): ApiResponse<Painting[]> => {
   return api.get('paintings', {
     params: {
       _limit: params?.limit,
