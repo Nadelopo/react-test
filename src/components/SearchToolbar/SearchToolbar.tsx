@@ -25,7 +25,7 @@ export const SearchToolbar: FC = () => {
       <div className={S.search_toolbar}>
         <Search
           placeholder="title"
-          containerAttrs={{ className: S.search }}
+          containerProps={{ className: S.search }}
           value={text}
           onInput={handleInput}
           onClear={() => {

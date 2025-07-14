@@ -1,7 +1,7 @@
 import type { Painting } from '@/api/services/paintings'
 import { useQuery } from '@tanstack/react-query'
 import { getPaintings } from '@/api/services/paintings'
-import { mapPaintings } from '@/api/services/paintings/paintingsMapper'
+import { mapPaintings } from '@/api/services/paintings/mapPaintings'
 import { useFiltersStore } from '@/stores/filtersStore'
 import { withInitialData } from '@/utils/queries'
 import { useAuthors } from './useAuthors'

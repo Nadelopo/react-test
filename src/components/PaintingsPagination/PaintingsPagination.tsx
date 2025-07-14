@@ -21,7 +21,7 @@ export const PaintingsPagination: FC = () => {
         currentPage={page}
         pageCount={data.countPaintings}
         pageSize={limit}
-        onUpdate={value => setPage(value)}
+        onUpdate={setPage}
       />
     </div>
   )

@@ -34,10 +34,10 @@ export const PaintingsGrid: FC = () => {
   ))
 
   return (
-    <div className="container">
+    <main className="container">
       <div className={S.paintings_grid}>
         {isFetching ? cardSkeletons : cards}
       </div>
-    </div>
+    </main>
   )
 }

@@ -5,11 +5,11 @@ import S from './Header.module.scss'
 
 export const Header: FC = () => {
   return (
-    <div className="container">
+    <header className="container">
       <div className={S.header}>
         <LogoIcon className={S.logo} />
         <ThemeSwitcher />
       </div>
-    </div>
+    </header>
   )
 }

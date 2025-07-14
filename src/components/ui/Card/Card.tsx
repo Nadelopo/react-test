@@ -11,7 +11,7 @@ export type CardProps = {
 
 export const Card: FC<CardProps> = (props) => {
   return (
-    <div className={S.card}>
+    <article className={S.card}>
       <img
         src={props.url}
         alt={props.name}
@@ -21,15 +21,15 @@ export const Card: FC<CardProps> = (props) => {
       <div className={S.info_wrapper}>
         <div className={S.info}>
           <div className={S.front}>
-            <div className={S.heading}>{props.name}</div>
-            <div className={S.caption}>{props.created}</div>
+            <h2 className={S.heading}>{props.name}</h2>
+            <h3 className={S.caption}>{props.created}</h3>
           </div>
           <div className={S.back}>
-            <div className={S.heading}>{props.author}</div>
-            <div className={S.caption}>{props.location}</div>
+            <h2 className={S.heading}>{props.author}</h2>
+            <h3 className={S.caption}>{props.location}</h3>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   )
 }

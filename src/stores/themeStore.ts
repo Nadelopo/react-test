@@ -14,7 +14,7 @@ const syncTheme = (theme: Theme) => {
   localStorageSet('theme', theme)
 }
 
-const getTheme = (): Theme => {
+const getAndSyncTheme = (): Theme => {
   const storageTheme = localStorageGet<Theme>('theme')
 
   if (storageTheme) {
@@ -32,7 +32,7 @@ const getTheme = (): Theme => {
 }
 
 export const useThemeStore = create<ThemeStore>((set, get) => ({
-  theme: getTheme(),
+  theme: getAndSyncTheme(),
   setTheme: (theme) => {
     set({ theme })
     syncTheme(theme)

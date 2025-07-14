@@ -5,16 +5,16 @@ import SearchIcon from '@/assets/icons/search_icon.svg?react'
 import S from './Search.module.scss'
 
 type SearchProps = InputHTMLAttributes<HTMLInputElement> & {
-  containerAttrs?: HTMLAttributes<HTMLDivElement>
+  containerProps?: HTMLAttributes<HTMLDivElement>
   onClear?: () => void
 }
 
-export const Search: FC<SearchProps> = ({ containerAttrs, onClear, ...props }) => {
+export const Search: FC<SearchProps> = ({ containerProps, onClear, ...props }) => {
   const id = props.id ?? crypto.randomUUID()
   return (
     <div
-      {...containerAttrs}
-      className={clsx(S.search, containerAttrs?.className)}
+      {...containerProps}
+      className={clsx(S.search, containerProps?.className)}
     >
       <SearchIcon className={S.saerch_icon} />
       <input
@@ -27,7 +27,7 @@ export const Search: FC<SearchProps> = ({ containerAttrs, onClear, ...props }) =
         && (
           <CrossIcon
             className={S.cross_icon}
-            onClick={() => onClear?.()}
+            onClick={onClear}
           />
         )
       }
