@@ -1,6 +1,5 @@
 import axios from 'axios'
-
-const API_URL = import.meta.env.VITE_API
+import { API_URL } from '@/constants/api.constants.'
 
 if (!API_URL) {
   throw new Error('api url not found')

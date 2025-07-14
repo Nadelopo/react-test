@@ -2,6 +2,7 @@ import type { Author } from '@/api/services/authors'
 import type { Location } from '@/api/services/locations'
 import type { Painting } from '@/api/services/paintings'
 import type { CardProps } from '@/components/ui/Card/Card'
+import { API_URL } from '@/constants/api.constants.'
 
 export const mapPaintings = (
   paintings: Painting[],
@@ -17,7 +18,7 @@ export const mapPaintings = (
       author,
       location,
       name: p.name,
-      url: import.meta.env.VITE_API + p.imageUrl,
+      url: API_URL + p.imageUrl,
       created: p.created
     }
   })
